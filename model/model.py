@@ -6,7 +6,12 @@ import os
 
 def train_and_save_model():
     # Load dataset
-    data_path = os.path.join(os.path.dirname(__file__), "..", "data", "dataset.csv")
+    data_path = os.path.join(
+        os.path.dirname(__file__),
+        "..",
+        "data",
+        "dataset.csv",
+    )
     df = pd.read_csv(data_path)
 
     X = df.drop("label", axis=1)
@@ -28,7 +33,8 @@ def load_model():
     model_path = os.path.join(os.path.dirname(__file__), "model.pkl")
     with open(model_path, "rb") as f:
         return pickle.load(f)
+
+
 if __name__ == "__main__":
     train_and_save_model()
     print("✅ Model trained and saved as model/model.pkl")
-
